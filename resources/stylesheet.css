@@ -158,14 +158,14 @@ a#fork-me:hover {
   padding:30px;
 }
 
-.content-block:first-child {
+.content-block.first {
   margin-top:30px;
   padding-top:10px;
   border-top:2px solid #CCC;
   border-radius:10px 10px 0px 0px;
 }
 
-.content-block:last-child {
+.content-block.last {
   margin-bottom:30px;
   border-bottom:2px solid #CCC;
   border-radius:0px 0px 10px 10px;
