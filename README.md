@@ -5,6 +5,10 @@ This is a simple little tool to check if your post/tweet has been shadowbanned o
 
 **Offline Version:** [download](https://github.com/SethClydesdale/shadowbanned-post-checker/archive/refs/heads/main.zip)
 
+#### Demo
+
+<img src="resources/images/shadowban-demo.gif">
+
 -----
 
 **Quick Links**
