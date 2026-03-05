@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+  <head>
+    <title>Shadowbanned Post Checker | Seth's GitHub Pages</title>
+    <meta name="title" content="Shadowbanned Post Checker | Seth's GitHub Pages">
+    <meta name="twitter:title" content="Shadowbanned Post Checker | Seth's GitHub Pages">
+    <meta property="og:title" content="Shadowbanned Post Checker | Seth's GitHub Pages">
+    <meta name="description" content="Check if your post has been shadow banned on Twitter/X.">
+    <meta property="og:description" content="Check if your post has been shadow banned on Twitter/X.">
+    <link rel="shortcut icon" type="image/x-icon" href="resources/images/main.ico">
+
+    <meta name="keywords" content="Twitch" lang="en">
+    <meta name="language" content="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:site_name" content="sethclydesdale.github.io">
+    <meta property="og:url" content="https://sethclydesdale.github.io/shadowbanned-post-checker/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://sethclydesdale.github.io/resources/images/main-sq.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@SethC1995">
+
+    <link rel="stylesheet" href="resources/stylesheet.min.css">
+    <script src="resources/ga.js" async></script>
+  </head>
+
+  <body>
+    
+    <header>
+      <h1 id="site-title"><a href="../" id="home-link">Seth's GitHub Pages</a></h1>
+      <a id="fork-me" href="https://github.com/SethClydesdale/shadowbanned-post-checker">Fork Me</a>
+    </header>
+    
+    <div id="content">
+      <div class="content-block center">
+        <h2 id="main-title" class="title">Shadowbanned Post Checker</h2>
+        <p id="main-paragraph">This page lets you check if a post has been shadowbanned on Twitter/X. Paste the link to a tweet/post into the input field below and click the "check" button to check if a post has been shadowbanned. You can also click the demo buttons below to test this tool.</p>
+        <div><strong>Demo:</strong> <button class="button dark-green" onclick="testPost('1680271950738751488');">Normal Post</button> <button class="button red" onclick="testPost('2027212551629529096');">Shadowbanned Post</button></div>
+      </div>
+      
+      <div class="content-block center">
+        <div><input id="tweet-input" type="text" onkeyup="event.keyCode == 13 && CheckTweet();"><button id="tweet-check" class="button" onclick="CheckTweet();">Check</button></div>
+        <div id="shadowban-status"></div>
+        <div id="tweet-link"></div>
+        <div id="tweet-container"></div>
+        <p>※ Please note that <strong>we cannot check private accounts</strong>. This will return a false positive. Please ensure that your account is PUBLIC if you want to check your post's status.</p>
+      </div>
+      
+      <div class="content-block">
+        <h3 id="why" class="section-title">Why are Posts Shadowbanned?</h3>
+        <p>Posts are typically shadowbanned for various reasons, such as:</p>
+        <ul>
+          <li>Suspected adult content.</li>
+          <li>Extremely vulgar language, such as slurs.</li>
+          <li>Other content that may violate X's terms of service.</li>
+        </ul>
+        <p>This is not an exhaustive list, mind you, but some of the most common reasons that posts are deboosted and restricted from embeds.</p>
+      </div>
+      
+      <div class="content-block">
+        <h3 id="how" class="section-title">How Does the Shadowban Affect My Post?</h3>
+        <p>Posts that are shadowbanned typically have their reach reduced or are "deboosted." This means that your post cannot be embed outside X and is less likely to be seen by other users, including your followers. To ensure your followers see your posts, you should encourage them to do the following:</p>
+        <ul>
+          <li>Ask your followers to click the "bell" button on your profile, so that they can be notified of new posts from you.</li>
+          <li>Ask your followers to enable "Recent" sorting for posts in the "Following" tab on the homepage, so that they see posts from accounts they're following in chronological order rather than the AI determining what posts they see. (Click: Home > Following > Recent)</li>
+          <li>If you post adult content, ask your followers to opt to view sensitive content. (More > Settings > Privacy and Safety > Content you see > Display media that may contain sensitive content)</li>
+        </ul>
+        <p>While this will help your followers see your posts, non-followers are less likely to see your post if it does get shadowbanned.</p>
+      </div>
+      
+      <div class="content-block">
+        <h3 id="avoid" class="section-title">How Can I Avoid My Post Being Shadowbanned?</h3>
+        <p>Posts get flagged by X's AI for various reasons as stated in the first section. Here are some tips for avoiding a shadowban on your posts:</p>
+        <ul>
+          <li>For posts being flagged for adult content, try reducing the amount of skin visible or cropping your image. Additionally, you can post the full image off-site.</li>
+          <li>Avoid using extremely vulgar language, such as slurs.</li>
+          <li>Follow X's terms of service and avoid breaking any rules that could potentially restrict your post's visibility.</li>
+        </ul>
+      </div>
+      
+      <div class="content-block">
+        <h3 id="disclaimer" class="section-title">Disclaimer</h3>
+        <p>This tool mainly checks for if your post can be embedded outside of Twitter/X or not. In most cases, not being able to embed your post means that it has been hit with a shadowban and thus has reduced reach, especially outside of your follower circle. There may be instances where your post <em>can</em> be embedded, but is shadowbanned for another reason, such as an account label which we cannot detect. Furthermore, even though your post may be hit with a shadowban, it can still possibly be seen by others if enough people share it.</p>
+        <p>
+          TL;DR<br>
+          Can embed = Good, most likely not shadowbanned.<br>
+          Cannot embed = Bad, most likely shadowbanned. Severity of deboost depends on content.
+        </p>
+        <p>Basically, this tool gives you a rough idea of your post's status and you can use this result to determine if you want to repost your post or not.</p>
+      </div>
+      
+      <div class="content-block">
+        <h3 id="contribute" class="section-title">Contribute</h3>
+        <p>This tool is open source, so if you'd like to improve the code or add to the content above, feel free to contribute on GitHub.</p>
+        <div class="center"><a href="https://github.com/SethClydesdale/shadowbanned-post-checker" class="button purple" target="_blank"><i class="fa">&#xf09b;</i> Visit GitHub Repository</a></div>
+      </div>
+    </div>
+    
+    <footer class="clear">
+      <ul class="footer-left">
+        <li><a href="../">Home</a></li>
+        <li><a href="../privacy/">Privacy</a></li>
+      </ul>
+      
+      <ul class="footer-right">
+        <li>Created by <a href="https://github.com/SethClydesdale">Seth Clydesdale</a></li>
+      </ul>
+    </footer>
+  
+    <script src="resources/javascript.min.js"></script>
+    <script src="resources/shadowban-checker.min.js"></script>
+  </body>
+</html>
